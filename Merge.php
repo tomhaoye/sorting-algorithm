@@ -1,6 +1,6 @@
 <?php
 
-$arr1 = [21,32,54,43,65,31,76,56,89,91];
+$arr1 = [21,32,54,43,65,31,76,56,89,97];
 $arr2 = [];
 $len = count($arr1);
 
@@ -21,13 +21,13 @@ function merge($arr1,$arr2,$index,$nedex,$ladex){
 // merge($arr1,$arr2,0,1,2);
 
 function start($arr1,$arr2,$len){
-	global $arr1;
+	global $arr1,$arr2;
 	$time = 1;
 	while($time < $len){
 		$i = 0;
 		$step = $time;
 		$time = 2*$step;
-		while ($i < $len-$time) {
+		while ($i < $len - $time) {
 			merge($arr1,$arr2,$i,$i+$step,$i+$time);
 			$i = $i+$time;
 		}
@@ -37,7 +37,6 @@ function start($arr1,$arr2,$len){
         $tmp = $arr1;
         $arr1 = $arr2;
         $arr2 = $tmp;
-		$time++;
 	}
 	print_r($arr1);
 }
