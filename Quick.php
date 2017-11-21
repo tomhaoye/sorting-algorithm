@@ -1,31 +1,31 @@
 <?php
 
-$arr = [42, 33, 45, 65, 13, 67, 34, 54, 76, 39];
+$arr = [42, 33, 45, 65, 13, 67, 34, 54, 76, 39, 99, 111, 233, 445, 65, 173, 627, 334, 554, 756, 349];
 
-function Qsort($index, $ladex, $arr)
+function Qsort($index, $last_index, $arr)
 {
 
     global $arr;
     $key = $arr[$index];
 
-    while ($index < $ladex) {
+    while ($index < $last_index) {
 
-        while ($index < $ladex && $arr[$ladex] >= $key) {
-            print($index . '~' . $ladex . '!');
-            $ladex--;
+        while ($index < $last_index && $arr[$last_index] >= $key) {
+            print($index . '~' . $last_index . '!');
+            $last_index--;
         }
-        if ($arr[$ladex] < $key) {
+        if ($arr[$last_index] < $key) {
             $tmp = $arr[$index];
-            $arr[$index] = $arr[$ladex];
-            $arr[$ladex] = $tmp;
+            $arr[$index] = $arr[$last_index];
+            $arr[$last_index] = $tmp;
         }
-        while ($index < $ladex && $arr[$index] <= $key) {
-            print($index . '~' . $ladex . '?');
+        while ($index < $last_index && $arr[$index] <= $key) {
+            print($index . '~' . $last_index . '?');
             $index++;
         }
         if ($arr[$index] > $key) {
-            $tmp = $arr[$ladex];
-            $arr[$ladex] = $arr[$index];
+            $tmp = $arr[$last_index];
+            $arr[$last_index] = $arr[$index];
             $arr[$index] = $tmp;
         }
     }
@@ -34,12 +34,12 @@ function Qsort($index, $ladex, $arr)
     return $index;
 }
 
-function Qself($index, $ladex, $arr)
+function Qself($index, $last_index, $arr)
 {
-    if ($index < $ladex) {
-        $back = Qsort($index, $ladex, $arr);
+    if ($index < $last_index) {
+        $back = Qsort($index, $last_index, $arr);
         Qself($index, $back - 1, $arr);
-        Qself($back + 1, $ladex, $arr);
+        Qself($back + 1, $last_index, $arr);
     }
 }
 
